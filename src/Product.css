@@ -9,6 +9,7 @@
     padding: 20px;
     max-height: 400px;
     min-width: 100px;
+    width: 100%;
 }
 
 .product img {
@@ -21,13 +22,16 @@
 .product__info {
     height: 100px;
     margin: 15px;
+    /*width: 100%;*/
 }
 
 .product__price {
     margin-top: 5px;
 }
 
-.product__rating {}
+.product__rating {
+    display: flex;
+}
 
 .product button {
     background: #f0c14b;
