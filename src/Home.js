@@ -14,7 +14,7 @@ function Home() {
         <div className="home__row">
           <Product
             id="766544"
-            title="The lean startup"
+            title="The lean Startup: How Constant Innovation Creates Radically Successful Businesses Paperback"
             price={29.99}
             image="https://images-na.ssl-images-amazon.com/images/I/51CTIr1bJxL._SX325_BO1,204,203,200_.jpg"
             rating={4}
