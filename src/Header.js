@@ -7,8 +7,8 @@ import { useStateValue } from "./StateProvider";
 
 function Header() {
   //Updating the count in the basket header__basketCount
-  const [basket, dispatch] = useStateValue();
-  
+  const [{ basket }, dispatch] = useStateValue();
+
   return (
     <div className="header">
       <Link to="/">
@@ -42,7 +42,7 @@ function Header() {
           <div className="header__optionBasket">
             <ShoppingBasketIcon />
             <span className="header__optionLineTwo header__basketCount">
-              {basket?.length}
+              {basket?.length /**"?" helps to manage errors  */}
             </span>
           </div>
         </Link>
