@@ -27,10 +27,10 @@ function Login() {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((auth) => {
-        //created a new user with email and password
+        //created a new user with email and Password
         console.log(auth);
         if (auth) {
-          history.push("/"); //redirecting to the home page
+          history.push("/"); //redirecting to the Home Page
         }
       })
       .catch((error) => alert(error.message));
