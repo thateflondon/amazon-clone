@@ -36,6 +36,12 @@ const reducer = (state, action) => {
         basket: newBasket,
       };
 
+    case "SET_USER":
+      return {
+        ...state,
+        user: action.user,
+      };
+
     //Remove from basket case
     /*case "REMOVE_FROM_BASKET":
     //Assuming the products share the same id

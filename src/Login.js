@@ -1,24 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import "./Login.css";
-import { useState } from "react";
+import { auth } from "./firebase";
 
 function Login() {
+  const history = useHistory(); //helps redirect the user to the home page after the login page sign-in/new account
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
 
   //Sign-In
   const signIn = (e) => {
     e.preventDefault();
     //firebase login
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((auth) => {
+        history.push("/");
+      })
+      .catch((error) => alert(error.message));
   };
-
 
   //Register
   const register = (e) => {
     e.preventDefault();
     //firebase register
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((auth) => {
+        //created a new user with email and password
+        console.log(auth);
+        if (auth) {
+          history.push("/"); //redirecting to the home page
+        }
+      })
+      .catch((error) => alert(error.message));
   };
 
   return (
