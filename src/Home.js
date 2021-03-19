@@ -22,8 +22,8 @@ function Home() {
           <Product
             id="13"
             title="New Apple Ipad Pro (12.9-inch, Wi-Fi, 128GB) - Silver (4th Generation)"
-            price={598.99}
-            image="https://m.media-amazon.com/images/I/81lqq8UF5ML._AC_UY436_FMwebp_QL65_.jpg"
+            price={999}
+            image="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-12-select-cell-silver-202003?wid=470&hei=556&fmt=png-alpha&.v=1583550059785"
             rating={5}
           />
         </div>
