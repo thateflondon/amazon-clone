@@ -19,7 +19,7 @@ function Payment() {
   //capture the errors
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  //payment state
+  //payment state 
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
   //request for the payment
@@ -39,9 +39,9 @@ function Payment() {
     getClientSecret();
   }, [basket]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (event) => {
     //communicate with stripe
-    e.preventDefault();
+    event.preventDefault();
     setProcessing(true);
 
     const payload = await stripe
@@ -61,11 +61,11 @@ function Payment() {
       });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (event) => {
     //communicate with stripe
     //listen for change in the CardElement and display any errors as the customer types card details
-    setDisabled(e.empty);
-    setError(e.error ? e.error.message : "");
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
   };
   return (
     <div className="payment">
