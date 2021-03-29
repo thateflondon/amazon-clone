@@ -44,11 +44,10 @@ function Payment() {
     event.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe
-      .confirmCardPayment(clientSecret, {
+    const payload = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement),
-        },
+          card: elements.getElement(CardElement)
+        }
       })
       .then(({ paymentIntent }) => {
         //paymentIntent = payment confirmation
@@ -67,6 +66,7 @@ function Payment() {
     setDisabled(event.empty);
     setError(event.error ? event.error.message : "");
   };
+
   return (
     <div className="payment">
       <div className="payment__container">
