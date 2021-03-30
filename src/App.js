@@ -10,9 +10,12 @@ import { useStateValue } from "./StateProvider";
 import Payment from "./Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import Orders from "./Orders";
 
 /**this is a public stripe key, don't need to hide it or gitignore */
-const promise = loadStripe("pk_test_51IY6UlC1XM3tYf8dfQTMdzpJS5LtrQQAMRXAv3btpL4pZgl1G9hWmML30fISimV1fDkLQsWrvVcg5HtC7HgtdWRS00B5BORYBq");
+const promise = loadStripe(
+  "pk_test_51IY6UlC1XM3tYf8dfQTMdzpJS5LtrQQAMRXAv3btpL4pZgl1G9hWmML30fISimV1fDkLQsWrvVcg5HtC7HgtdWRS00B5BORYBq"
+);
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -58,6 +61,10 @@ function App() {
             <Elements stripe={promise}>
               <Payment />
             </Elements>
+          </Route>
+          <Route path="/orders">
+            <Header />
+            <Orders />
           </Route>
           <Route path="/">
             <Header />

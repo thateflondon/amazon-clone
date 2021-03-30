@@ -19,7 +19,7 @@ function Payment() {
   //capture the errors
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
-  //payment state 
+  //payment state
   const [succeeded, setSucceeded] = useState(false);
   const [processing, setProcessing] = useState("");
   //request for the payment
@@ -39,17 +39,18 @@ function Payment() {
     getClientSecret();
   }, [basket]);
 
-  console.log('THE SECRET IS >>>>', clientSecret)
+  console.log("THE SECRET IS >>>>", clientSecret);
 
   const handleSubmit = async (event) => {
     //communicate with stripe
     event.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe.confirmCardPayment(clientSecret, {
+    const payload = await stripe
+      .confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement)
-        }
+          card: elements.getElement(CardElement),
+        },
       })
       .then(({ paymentIntent }) => {
         //paymentIntent = payment confirmation
@@ -57,6 +58,11 @@ function Payment() {
         setSucceeded(true);
         setError(null);
         setProcessing(false);
+
+        //empty the basket after payment suceeded
+        dispatch({
+          type: "EMPTY_BASKET",
+        });
 
         history.replace("/orders");
       });
