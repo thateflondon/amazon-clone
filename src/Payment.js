@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
 import axios from "./axios";
+import { db } from "./firebase";
 
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
@@ -54,6 +55,17 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         //paymentIntent = payment confirmation
+
+        //manage users collection (orders - cloud firestore) NOSQL database
+        db.collection("users")
+          .doc(user?.uid) //.doc(user?.id) also worked for me
+          .collection("orders")
+          .doc(paymentIntent.id)
+          .set({
+            basket: basket,
+            amount: paymentIntent.amount,
+            created: paymentIntent.created,
+          });
 
         setSucceeded(true);
         setError(null);
